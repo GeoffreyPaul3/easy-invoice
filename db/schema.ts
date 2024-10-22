@@ -11,12 +11,12 @@ export const statusEnum = pgEnum("status", [
   "open",
   "paid",
   "void",
-  "uncollectibe",
+  "uncollectible",
 ]);
 
 export const Invoices = pgTable("invoices", {
   id: serial("id").primaryKey().notNull(),
-  craeteTs: timestamp("createTs").defaultNow().notNull(),
+  createTs: timestamp("createTs").defaultNow().notNull(),
   status: statusEnum("status").notNull(),
   value: integer("value").notNull(),
   description: text("description").notNull(),

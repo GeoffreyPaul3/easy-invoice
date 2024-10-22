@@ -5,22 +5,18 @@ import SubmitButton from '@/components/SubmitButton'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
-import { startTransition, SyntheticEvent, useState,   } from 'react'
+import { SyntheticEvent, useState } from 'react'
 import Form from "next/form"
 
 
 export default function CreateInvoice() {
     const [state, setState] = useState('ready')
     async function handleOnSubmit(event: SyntheticEvent) {
-        event.preventDefault()
-        if (state === 'pending') return;
-        setState('pending')
-        const target = event.target as HTMLFormElement;
-        startTransition(async () => {
-              const formData = new FormData(target);
-        await createAction(formData)
-        })
-      
+        
+        if (state === 'pending'){
+          event.preventDefault();
+        }
+        setState('pending')  
     }
 
   return (
